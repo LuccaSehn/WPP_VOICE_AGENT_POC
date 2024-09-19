@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+openai
+twilio
+sqlalchemy
+psycopg2-binary
+python-multipart
+pyngrok
+pydub
+requests
+python-dotenv
+Faker
+awscli-local

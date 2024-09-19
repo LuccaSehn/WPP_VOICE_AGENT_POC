@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PROJECT_ID
+  namespace: PROJECT_NAMESPACE
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: PROJECT_ID
+  template:
+    metadata:
+      labels:
+        name: PROJECT_ID
+    spec:
+      containers:
+        - name: PROJECT_ID
+          image: PROJECT_CONTAINER_IMAGE
+          resources:
+            limits:
+              cpu: 512m
+              memory: 512m
+            requests:
+              cpu: 256m
+              memory: 256Mi
+          env: []
+          ports:
+          - containerPort: PROJECT_PORT
+            name: default-port
+            protocol: TCP
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: PROJECT_ID
+  namespace: PROJECT_NAMESPACE
+spec:
+  selector:
+    name: PROJECT_ID
+  ports:
+  - port: PROJECT_PORT
+    targetPort: PROJECT_PORT
+    name: PROJECT_ID

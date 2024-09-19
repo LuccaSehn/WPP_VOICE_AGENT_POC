@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: PROJECT_ID-health
+  namespace: PROJECT_NAMESPACE
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+spec:
+  tls:
+    - hosts:
+        - PROJECT_DOMAIN
+      secretName: PROJECT_ID
+  rules:
+  - host: PROJECT_DOMAIN
+    http:
+      paths:
+      - path: /health
+        pathType: Prefix
+        backend:
+          service:
+            name: PROJECT_ID
+            port:
+              number: PROJECT_PORT

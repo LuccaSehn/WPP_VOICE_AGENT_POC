@@ -1,0 +1,40 @@
+services:
+  app:
+    container_name: whatsapp-voice-ai
+    build:
+      context: ./
+      dockerfile: .devops/docker/Dockerfile
+    env_file:
+      - ./.env
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: ${APP_ENV}
+    volumes:
+      - ./:/app
+    depends_on:
+      - postgres
+    networks:
+      - whatsapp-voice-ai
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    networks:
+      - whatsapp-voice-ai
+
+networks:
+  whatsapp-voice-ai:
+    driver: bridge
+
+volumes:
+  postgresdata:
