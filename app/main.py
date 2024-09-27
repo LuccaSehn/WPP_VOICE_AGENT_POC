@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from .modules.conversation.routes import router as conversation_router
-from .dependencies.aws.aws import create_s3_client
 
 load_dotenv()
 

@@ -3,7 +3,7 @@ import uuid
 import boto3
 from boto3.s3.transfer import S3Transfer
 from openai import OpenAI
-from ...dependencies.aws.aws import get_aws_client, get_aws_transfer
+from ...dependencies.aws.aws import get_aws_transfer
 from dataclasses import dataclass
 from fastapi import Depends
 from typing import Annotated
